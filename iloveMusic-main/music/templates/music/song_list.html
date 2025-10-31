@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>iLoveMusic 🎵</title>
+</head>
+<body>
+    <h1>Lista de canciones</h1>
+    <ul>
+        {% for song in songs %}
+            <li>{{ song.title }} — {{ song.artist }}</li>
+        {% empty %}
+            <li>No hay canciones todavía 😢</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

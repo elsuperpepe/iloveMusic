@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <title>iLoveMusic 🎵</title>
 </head>
-<body>
-    <h1>Lista de canciones</h1>
-    <ul>
-        {% for song in songs %}
-            <li>{{ song.title }} — {{ song.artist }}</li>
-        {% empty %}
-            <li>No hay canciones todavía 😢</li>
-        {% endfor %}
-    </ul>
+<body style="font-family: Arial; background: #121212; color: white; text-align: center;">
+    <h1 style="color: #1DB954;">Lista de canciones 🎶</h1>
+
+    {% for song in songs %}
+        <div style="margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 15px;">
+            {% if song.cover %}
+                <img src="{{ song.cover.url }}" alt="Portada del álbum" width="200" style="border-radius: 10px; margin-bottom: 10px;">
+            {% endif %}
+            <h2>{{ song.title }}</h2>
+            <p><strong>Artista:</strong> {{ song.artist }}</p>
+            <p><strong>Álbum:</strong> {{ song.album }}</p>
+
+            {% if song.file %}
+                <a href="{{ song.file.url }}" download style="color: #1DB954; text-decoration: none;">⬇️ Descargar canción</a>
+            {% else %}
+                <p style="color: gray;">(Sin archivo subido)</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No hay canciones todavía 😢</p>
+    {% endfor %}
 </body>
 </html>
